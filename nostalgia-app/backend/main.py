@@ -38,6 +38,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+port = int(os.environ.get("PORT", 8000))
+
 
 class QuestionnaireData(BaseModel):
     birthYear: str
@@ -101,3 +103,9 @@ async def generate_nostalgia(data: QuestionnaireData):
         print("Unexpected error:", str(e))
         print(traceback.format_exc())
         raise HTTPException(status_code=500, detail=f"Unexpected error: {str(e)}")
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(app, host="0.0.0.0", port=port)
