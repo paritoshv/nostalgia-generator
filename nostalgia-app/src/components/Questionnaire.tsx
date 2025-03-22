@@ -51,8 +51,10 @@ export default function Questionnaire() {
     try {
       setIsSubmitting(true);
       setError(null);
+
+      const backendUrl =  import.meta.env.REACT_APP_API_URL || 'http://localhost:8000/api/generate-nostalgia';
       
-      const response = await fetch('http://localhost:8000/api/generate-nostalgia', {
+      const response = await fetch(backendUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -77,7 +79,7 @@ export default function Questionnaire() {
   const handleGenerateAgain = async () => {
     setIsSubmitting(true);
     try {
-      const response = await fetch('http://localhost:8000/api/generate-nostalgia', {
+      const response = await fetch(import.meta.env.REACT_APP_API_URL || 'http://localhost:8000/api/generate-nostalgia', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -182,7 +184,7 @@ export default function Questionnaire() {
                 placeholder={currentQuestionData.placeholder}
                 value={data[currentQuestionData.id]}
                 onChange={(e) => handleInputChange(e.target.value)}
-              />
+              />.
             ) : (
               <div className="space-y-3">
                 {currentQuestionData.options?.map((option, index) => (

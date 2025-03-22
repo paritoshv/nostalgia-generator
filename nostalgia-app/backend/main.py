@@ -17,9 +17,9 @@ if not GOOGLE_API_KEY:
 try:
     genai.configure(api_key=GOOGLE_API_KEY)
     # List available models
-    print("Available models:")
-    for m in genai.list_models():
-        print(f"- {m.name}")
+    # print("Available models:")
+    # for m in genai.list_models():
+    #     print(f"- {m.name}")
     # Initialize the model with the correct name
     model = genai.GenerativeModel("models/gemini-1.5-pro")
 except Exception as e:
