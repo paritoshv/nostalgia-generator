@@ -184,7 +184,7 @@ export default function Questionnaire() {
                 placeholder={currentQuestionData.placeholder}
                 value={data[currentQuestionData.id]}
                 onChange={(e) => handleInputChange(e.target.value)}
-              />.
+              />
             ) : (
               <div className="space-y-3">
                 {currentQuestionData.options?.map((option, index) => (
