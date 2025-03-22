@@ -2,6 +2,12 @@ import { useState } from 'react';
 import { questions } from '../data/questions';
 import { QuestionnaireData } from '../types/questionnaire';
 
+// Get the API URL from environment variables
+const API_URL = import.meta.env.VITE_API_URL;
+if (!API_URL) {
+  console.warn('VITE_API_URL is not set, defaulting to localhost');
+}
+
 const initialData: QuestionnaireData = {
   birthYear: '',
   definingEvent: '',
@@ -51,10 +57,8 @@ export default function Questionnaire() {
     try {
       setIsSubmitting(true);
       setError(null);
-
-      const backendUrl =  import.meta.env.REACT_APP_API_URL || 'http://localhost:8000/api/generate-nostalgia';
       
-      const response = await fetch(backendUrl, {
+      const response = await fetch(`${API_URL}/api/generate-nostalgia`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -79,7 +83,7 @@ export default function Questionnaire() {
   const handleGenerateAgain = async () => {
     setIsSubmitting(true);
     try {
-      const response = await fetch(import.meta.env.REACT_APP_API_URL || 'http://localhost:8000/api/generate-nostalgia', {
+      const response = await fetch(`${API_URL}/api/generate-nostalgia`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
