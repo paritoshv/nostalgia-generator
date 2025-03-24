@@ -35,6 +35,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",  # Local development
         "https://nostalgia-generator.netlify.app",  # Production URL
+        "https://nostalgia.paritosh.online/",
     ],
     allow_credentials=True,
     allow_methods=["*"],
