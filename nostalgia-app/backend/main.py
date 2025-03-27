@@ -34,8 +34,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",  # Local development
-        "https://nostalgia-generator.netlify.app",  # Production URL
-        "https://nostalgia.paritosh.online/",
+        "https://nostalgia-generator.netlify.app",  # Netlify domain
+        "https://nostalgia.paritosh.online",  # Custom domain
     ],
     allow_credentials=True,
     allow_methods=["*"],
